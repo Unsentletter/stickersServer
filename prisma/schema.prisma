@@ -8,14 +8,19 @@ datasource db {
 }
 
 model Stickers {
-  id    Int  @default(autoincrement()) @id
-  tally Int? @default(0)
+  created_at DateTime @default(now())
+  id         Int      @default(autoincrement()) @id
+  parent     String?
+  tally      Int?     @default(0)
+  Users      Users    @relation(fields: [id], references: [id])
 }
 
-model User {
-  email    String  @unique
-  id       Int     @default(autoincrement()) @id
-  ischild  Boolean @default(false)
-  name     String?
-  password String
+model Users {
+  created_at DateTime   @default(now())
+  email      String     @unique
+  id         Int        @default(autoincrement()) @id
+  ischild    Boolean    @default(false)
+  name       String?
+  password   String
+  Stickers   Stickers[]
 }

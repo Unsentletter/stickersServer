@@ -1,14 +1,15 @@
 import { nexusPrismaPlugin } from 'nexus-prisma';
-import { intArg, makeSchema, objectType, stringArg } from 'nexus';
+import { makeSchema, objectType } from 'nexus';
 
 const User = objectType({
   name: 'User',
   definition(t) {
-    t.model.id(),
-      t.model.name(),
-      t.model.email(),
-      t.model.password(),
-      t.model.isChild();
+    t.id('id');
+    t.string('name');
+    t.string('email');
+    t.string('password');
+    t.boolean('isChild');
+    t.string('created_at');
   },
 });
 

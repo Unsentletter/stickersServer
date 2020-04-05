@@ -1,0 +1,5 @@
+ALTER TABLE "public"."Users"
+    ADD COLUMN created_at TIMESTAMP NOT NULL DEFAULT NOW();
+
+ALTER TABLE "public"."Stickers"
+    ADD COLUMN created_at TIMESTAMP NOT NULL DEFAULT NOW();
