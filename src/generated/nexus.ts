@@ -4,6 +4,7 @@
  */
 
 import * as Context from "../context"
+import * as prisma from "@prisma/client"
 
 
 
@@ -26,19 +27,13 @@ export interface NexusGenEnums {
 
 export interface NexusGenRootTypes {
   Query: {};
-  User: { // root type
-    created_at: string; // String!
-    email: string; // String!
-    id: string; // ID!
-    isChild: boolean; // Boolean!
-    name: string; // String!
-    password: string; // String!
-  }
+  Users: prisma.Users;
   String: string;
   Int: number;
   Float: number;
   Boolean: boolean;
   ID: string;
+  DateTime: any;
 }
 
 export interface NexusGenAllTypes extends NexusGenRootTypes {
@@ -48,12 +43,12 @@ export interface NexusGenFieldTypes {
   Query: { // field return type
     ok: boolean; // Boolean!
   }
-  User: { // field return type
-    created_at: string; // String!
+  Users: { // field return type
+    created_at: any; // DateTime!
     email: string; // String!
-    id: string; // ID!
-    isChild: boolean; // Boolean!
-    name: string; // String!
+    id: number; // Int!
+    ischild: boolean; // Boolean!
+    name: string | null; // String
     password: string; // String!
   }
 }
@@ -66,7 +61,7 @@ export interface NexusGenAbstractResolveReturnTypes {
 
 export interface NexusGenInheritedFields {}
 
-export type NexusGenObjectNames = "Query" | "User";
+export type NexusGenObjectNames = "Query" | "Users";
 
 export type NexusGenInputNames = never;
 
@@ -74,7 +69,7 @@ export type NexusGenEnumNames = never;
 
 export type NexusGenInterfaceNames = never;
 
-export type NexusGenScalarNames = "Boolean" | "Float" | "ID" | "Int" | "String";
+export type NexusGenScalarNames = "Boolean" | "DateTime" | "Float" | "ID" | "Int" | "String";
 
 export type NexusGenUnionNames = never;
 

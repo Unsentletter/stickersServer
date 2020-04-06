@@ -1,20 +1,20 @@
 import { nexusPrismaPlugin } from 'nexus-prisma';
 import { makeSchema, objectType } from 'nexus';
 
-const User = objectType({
-  name: 'User',
+const Users = objectType({
+  name: 'Users',
   definition(t) {
-    t.id('id');
-    t.string('name');
-    t.string('email');
-    t.string('password');
-    t.boolean('isChild');
-    t.string('created_at');
+    t.model.id();
+    t.model.name();
+    t.model.email();
+    t.model.password();
+    t.model.ischild();
+    t.model.created_at();
   },
 });
 
 export const schema = makeSchema({
-  types: [User],
+  types: [Users],
   plugins: [nexusPrismaPlugin()],
   outputs: {
     schema: __dirname + '/../schema.graphql',

@@ -2,15 +2,17 @@
 ### Do not make changes to this file directly
 
 
+scalar DateTime
+
 type Query {
   ok: Boolean!
 }
 
-type User {
-  created_at: String!
+type Users {
+  created_at: DateTime!
   email: String!
-  id: ID!
-  isChild: Boolean!
-  name: String!
+  id: Int!
+  ischild: Boolean!
+  name: String
   password: String!
 }
