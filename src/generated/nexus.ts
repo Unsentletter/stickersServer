@@ -37,6 +37,10 @@ export interface NexusGenEnums {
 }
 
 export interface NexusGenRootTypes {
+  AuthPayload: { // root type
+    jwt: string; // String!
+    user: NexusGenRootTypes['User']; // User!
+  }
   Mutation: {};
   Query: {};
   User: prisma.User;
@@ -54,7 +58,12 @@ export interface NexusGenAllTypes extends NexusGenRootTypes {
 }
 
 export interface NexusGenFieldTypes {
+  AuthPayload: { // field return type
+    jwt: string; // String!
+    user: NexusGenRootTypes['User']; // User!
+  }
   Mutation: { // field return type
+    signup: NexusGenRootTypes['AuthPayload']; // AuthPayload!
     signupUser: NexusGenRootTypes['User']; // User!
   }
   Query: { // field return type
@@ -72,6 +81,11 @@ export interface NexusGenFieldTypes {
 
 export interface NexusGenArgTypes {
   Mutation: {
+    signup: { // args
+      email: string; // String!
+      name: string; // String!
+      password: string; // String!
+    }
     signupUser: { // args
       data: NexusGenInputs['UserCreateInput']; // UserCreateInput!
     }
@@ -92,7 +106,7 @@ export interface NexusGenAbstractResolveReturnTypes {
 
 export interface NexusGenInheritedFields {}
 
-export type NexusGenObjectNames = "Mutation" | "Query" | "User";
+export type NexusGenObjectNames = "AuthPayload" | "Mutation" | "Query" | "User";
 
 export type NexusGenInputNames = "UserCreateInput" | "UserWhereUniqueInput";
 
