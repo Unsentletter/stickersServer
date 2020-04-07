@@ -40,6 +40,10 @@ export interface NexusGenInputs {
     password: string; // String!
     Stickers?: NexusGenInputs['StickersCreateManyWithoutUsersInput'] | null; // StickersCreateManyWithoutUsersInput
   }
+  UsersWhereUniqueInput: { // input type
+    email?: string | null; // String
+    id?: number | null; // Int
+  }
 }
 
 export interface NexusGenEnums {
@@ -62,6 +66,7 @@ export interface NexusGenAllTypes extends NexusGenRootTypes {
   StickersCreateWithoutUsersInput: NexusGenInputs['StickersCreateWithoutUsersInput'];
   StickersWhereUniqueInput: NexusGenInputs['StickersWhereUniqueInput'];
   UsersCreateInput: NexusGenInputs['UsersCreateInput'];
+  UsersWhereUniqueInput: NexusGenInputs['UsersWhereUniqueInput'];
 }
 
 export interface NexusGenFieldTypes {
@@ -69,7 +74,7 @@ export interface NexusGenFieldTypes {
     signupUser: NexusGenRootTypes['Users']; // Users!
   }
   Query: { // field return type
-    ok: boolean; // Boolean!
+    users: NexusGenRootTypes['Users'][]; // [Users!]!
   }
   Users: { // field return type
     created_at: any; // DateTime!
@@ -87,6 +92,15 @@ export interface NexusGenArgTypes {
       data: NexusGenInputs['UsersCreateInput']; // UsersCreateInput!
     }
   }
+  Query: {
+    users: { // args
+      after?: NexusGenInputs['UsersWhereUniqueInput'] | null; // UsersWhereUniqueInput
+      before?: NexusGenInputs['UsersWhereUniqueInput'] | null; // UsersWhereUniqueInput
+      first?: number | null; // Int
+      last?: number | null; // Int
+      skip?: number | null; // Int
+    }
+  }
 }
 
 export interface NexusGenAbstractResolveReturnTypes {
@@ -96,7 +110,7 @@ export interface NexusGenInheritedFields {}
 
 export type NexusGenObjectNames = "Mutation" | "Query" | "Users";
 
-export type NexusGenInputNames = "StickersCreateManyWithoutUsersInput" | "StickersCreateWithoutUsersInput" | "StickersWhereUniqueInput" | "UsersCreateInput";
+export type NexusGenInputNames = "StickersCreateManyWithoutUsersInput" | "StickersCreateWithoutUsersInput" | "StickersWhereUniqueInput" | "UsersCreateInput" | "UsersWhereUniqueInput";
 
 export type NexusGenEnumNames = never;
 

@@ -9,7 +9,7 @@ type Mutation {
 }
 
 type Query {
-  ok: Boolean!
+  users(after: UsersWhereUniqueInput, before: UsersWhereUniqueInput, first: Int, last: Int, skip: Int): [Users!]!
 }
 
 input StickersCreateManyWithoutUsersInput {
@@ -43,4 +43,9 @@ input UsersCreateInput {
   name: String
   password: String!
   Stickers: StickersCreateManyWithoutUsersInput
+}
+
+input UsersWhereUniqueInput {
+  email: String
+  id: Int
 }

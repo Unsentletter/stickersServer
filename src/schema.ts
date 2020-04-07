@@ -20,8 +20,15 @@ const Mutation = objectType({
   },
 });
 
+const Query = objectType({
+  name: 'Query',
+  definition(t) {
+    t.crud.users();
+  },
+});
+
 export const schema = makeSchema({
-  types: [Users, Mutation],
+  types: [Users, Mutation, Query],
   plugins: [nexusPrismaPlugin()],
   outputs: {
     schema: __dirname + '/../schema.graphql',
