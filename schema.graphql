@@ -5,29 +5,14 @@
 scalar DateTime
 
 type Mutation {
-  signupUser(data: UsersCreateInput!): Users!
+  signupUser(data: UserCreateInput!): User!
 }
 
 type Query {
-  users(after: UsersWhereUniqueInput, before: UsersWhereUniqueInput, first: Int, last: Int, skip: Int): [Users!]!
+  findAllUsers(after: UserWhereUniqueInput, before: UserWhereUniqueInput, first: Int, last: Int, skip: Int): [User!]!
 }
 
-input StickersCreateManyWithoutUsersInput {
-  connect: [StickersWhereUniqueInput!]
-  create: [StickersCreateWithoutUsersInput!]
-}
-
-input StickersCreateWithoutUsersInput {
-  created_at: DateTime
-  parent: String
-  tally: Int
-}
-
-input StickersWhereUniqueInput {
-  id: Int
-}
-
-type Users {
+type User {
   created_at: DateTime!
   email: String!
   id: Int!
@@ -36,16 +21,15 @@ type Users {
   password: String!
 }
 
-input UsersCreateInput {
+input UserCreateInput {
   created_at: DateTime
   email: String!
   ischild: Boolean
   name: String
   password: String!
-  Stickers: StickersCreateManyWithoutUsersInput
 }
 
-input UsersWhereUniqueInput {
+input UserWhereUniqueInput {
   email: String
   id: Int
 }

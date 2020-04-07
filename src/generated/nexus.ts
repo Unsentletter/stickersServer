@@ -20,27 +20,14 @@ declare global {
 }
 
 export interface NexusGenInputs {
-  StickersCreateManyWithoutUsersInput: { // input type
-    connect?: NexusGenInputs['StickersWhereUniqueInput'][] | null; // [StickersWhereUniqueInput!]
-    create?: NexusGenInputs['StickersCreateWithoutUsersInput'][] | null; // [StickersCreateWithoutUsersInput!]
-  }
-  StickersCreateWithoutUsersInput: { // input type
-    created_at?: any | null; // DateTime
-    parent?: string | null; // String
-    tally?: number | null; // Int
-  }
-  StickersWhereUniqueInput: { // input type
-    id?: number | null; // Int
-  }
-  UsersCreateInput: { // input type
+  UserCreateInput: { // input type
     created_at?: any | null; // DateTime
     email: string; // String!
     ischild?: boolean | null; // Boolean
     name?: string | null; // String
     password: string; // String!
-    Stickers?: NexusGenInputs['StickersCreateManyWithoutUsersInput'] | null; // StickersCreateManyWithoutUsersInput
   }
-  UsersWhereUniqueInput: { // input type
+  UserWhereUniqueInput: { // input type
     email?: string | null; // String
     id?: number | null; // Int
   }
@@ -52,7 +39,7 @@ export interface NexusGenEnums {
 export interface NexusGenRootTypes {
   Mutation: {};
   Query: {};
-  Users: prisma.Users;
+  User: prisma.User;
   String: string;
   Int: number;
   Float: number;
@@ -62,21 +49,18 @@ export interface NexusGenRootTypes {
 }
 
 export interface NexusGenAllTypes extends NexusGenRootTypes {
-  StickersCreateManyWithoutUsersInput: NexusGenInputs['StickersCreateManyWithoutUsersInput'];
-  StickersCreateWithoutUsersInput: NexusGenInputs['StickersCreateWithoutUsersInput'];
-  StickersWhereUniqueInput: NexusGenInputs['StickersWhereUniqueInput'];
-  UsersCreateInput: NexusGenInputs['UsersCreateInput'];
-  UsersWhereUniqueInput: NexusGenInputs['UsersWhereUniqueInput'];
+  UserCreateInput: NexusGenInputs['UserCreateInput'];
+  UserWhereUniqueInput: NexusGenInputs['UserWhereUniqueInput'];
 }
 
 export interface NexusGenFieldTypes {
   Mutation: { // field return type
-    signupUser: NexusGenRootTypes['Users']; // Users!
+    signupUser: NexusGenRootTypes['User']; // User!
   }
   Query: { // field return type
-    users: NexusGenRootTypes['Users'][]; // [Users!]!
+    findAllUsers: NexusGenRootTypes['User'][]; // [User!]!
   }
-  Users: { // field return type
+  User: { // field return type
     created_at: any; // DateTime!
     email: string; // String!
     id: number; // Int!
@@ -89,13 +73,13 @@ export interface NexusGenFieldTypes {
 export interface NexusGenArgTypes {
   Mutation: {
     signupUser: { // args
-      data: NexusGenInputs['UsersCreateInput']; // UsersCreateInput!
+      data: NexusGenInputs['UserCreateInput']; // UserCreateInput!
     }
   }
   Query: {
-    users: { // args
-      after?: NexusGenInputs['UsersWhereUniqueInput'] | null; // UsersWhereUniqueInput
-      before?: NexusGenInputs['UsersWhereUniqueInput'] | null; // UsersWhereUniqueInput
+    findAllUsers: { // args
+      after?: NexusGenInputs['UserWhereUniqueInput'] | null; // UserWhereUniqueInput
+      before?: NexusGenInputs['UserWhereUniqueInput'] | null; // UserWhereUniqueInput
       first?: number | null; // Int
       last?: number | null; // Int
       skip?: number | null; // Int
@@ -108,9 +92,9 @@ export interface NexusGenAbstractResolveReturnTypes {
 
 export interface NexusGenInheritedFields {}
 
-export type NexusGenObjectNames = "Mutation" | "Query" | "Users";
+export type NexusGenObjectNames = "Mutation" | "Query" | "User";
 
-export type NexusGenInputNames = "StickersCreateManyWithoutUsersInput" | "StickersCreateWithoutUsersInput" | "StickersWhereUniqueInput" | "UsersCreateInput" | "UsersWhereUniqueInput";
+export type NexusGenInputNames = "UserCreateInput" | "UserWhereUniqueInput";
 
 export type NexusGenEnumNames = never;
 

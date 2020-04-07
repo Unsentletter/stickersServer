@@ -12,15 +12,13 @@ model Stickers {
   id         Int      @default(autoincrement()) @id
   parent     String?
   tally      Int?     @default(0)
-  Users      Users    @relation(fields: [id], references: [id])
 }
 
-model Users {
-  created_at DateTime   @default(now())
-  email      String     @unique
-  id         Int        @default(autoincrement()) @id
-  ischild    Boolean    @default(false)
+model User {
+  created_at DateTime @default(now())
+  email      String   @unique
+  id         Int      @default(autoincrement()) @id
+  ischild    Boolean  @default(false)
   name       String?
   password   String
-  Stickers   Stickers[]
 }
