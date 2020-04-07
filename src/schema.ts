@@ -13,8 +13,15 @@ const Users = objectType({
   },
 });
 
+const Mutation = objectType({
+  name: 'Mutation',
+  definition(t) {
+    t.crud.createOneUsers({ alias: 'signupUser' });
+  },
+});
+
 export const schema = makeSchema({
-  types: [Users],
+  types: [Users, Mutation],
   plugins: [nexusPrismaPlugin()],
   outputs: {
     schema: __dirname + '/../schema.graphql',

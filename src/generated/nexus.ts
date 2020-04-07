@@ -20,12 +20,33 @@ declare global {
 }
 
 export interface NexusGenInputs {
+  StickersCreateManyWithoutUsersInput: { // input type
+    connect?: NexusGenInputs['StickersWhereUniqueInput'][] | null; // [StickersWhereUniqueInput!]
+    create?: NexusGenInputs['StickersCreateWithoutUsersInput'][] | null; // [StickersCreateWithoutUsersInput!]
+  }
+  StickersCreateWithoutUsersInput: { // input type
+    created_at?: any | null; // DateTime
+    parent?: string | null; // String
+    tally?: number | null; // Int
+  }
+  StickersWhereUniqueInput: { // input type
+    id?: number | null; // Int
+  }
+  UsersCreateInput: { // input type
+    created_at?: any | null; // DateTime
+    email: string; // String!
+    ischild?: boolean | null; // Boolean
+    name?: string | null; // String
+    password: string; // String!
+    Stickers?: NexusGenInputs['StickersCreateManyWithoutUsersInput'] | null; // StickersCreateManyWithoutUsersInput
+  }
 }
 
 export interface NexusGenEnums {
 }
 
 export interface NexusGenRootTypes {
+  Mutation: {};
   Query: {};
   Users: prisma.Users;
   String: string;
@@ -37,9 +58,16 @@ export interface NexusGenRootTypes {
 }
 
 export interface NexusGenAllTypes extends NexusGenRootTypes {
+  StickersCreateManyWithoutUsersInput: NexusGenInputs['StickersCreateManyWithoutUsersInput'];
+  StickersCreateWithoutUsersInput: NexusGenInputs['StickersCreateWithoutUsersInput'];
+  StickersWhereUniqueInput: NexusGenInputs['StickersWhereUniqueInput'];
+  UsersCreateInput: NexusGenInputs['UsersCreateInput'];
 }
 
 export interface NexusGenFieldTypes {
+  Mutation: { // field return type
+    signupUser: NexusGenRootTypes['Users']; // Users!
+  }
   Query: { // field return type
     ok: boolean; // Boolean!
   }
@@ -54,6 +82,11 @@ export interface NexusGenFieldTypes {
 }
 
 export interface NexusGenArgTypes {
+  Mutation: {
+    signupUser: { // args
+      data: NexusGenInputs['UsersCreateInput']; // UsersCreateInput!
+    }
+  }
 }
 
 export interface NexusGenAbstractResolveReturnTypes {
@@ -61,9 +94,9 @@ export interface NexusGenAbstractResolveReturnTypes {
 
 export interface NexusGenInheritedFields {}
 
-export type NexusGenObjectNames = "Query" | "Users";
+export type NexusGenObjectNames = "Mutation" | "Query" | "Users";
 
-export type NexusGenInputNames = never;
+export type NexusGenInputNames = "StickersCreateManyWithoutUsersInput" | "StickersCreateWithoutUsersInput" | "StickersWhereUniqueInput" | "UsersCreateInput";
 
 export type NexusGenEnumNames = never;
 
