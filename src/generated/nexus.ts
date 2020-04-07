@@ -38,7 +38,7 @@ export interface NexusGenEnums {
 
 export interface NexusGenRootTypes {
   AuthPayload: { // root type
-    jwt: string; // String!
+    token: string; // String!
     user: NexusGenRootTypes['User']; // User!
   }
   Mutation: {};
@@ -59,7 +59,7 @@ export interface NexusGenAllTypes extends NexusGenRootTypes {
 
 export interface NexusGenFieldTypes {
   AuthPayload: { // field return type
-    jwt: string; // String!
+    token: string; // String!
     user: NexusGenRootTypes['User']; // User!
   }
   Mutation: { // field return type
