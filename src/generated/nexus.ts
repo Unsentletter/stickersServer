@@ -22,7 +22,7 @@ declare global {
 export interface NexusGenInputs {
   UserCreateInput: { // input type
     created_at?: any | null; // DateTime
-    email: string; // String!
+    email?: string | null; // String
     ischild?: boolean | null; // Boolean
     name?: string | null; // String
     password: string; // String!
@@ -71,7 +71,7 @@ export interface NexusGenFieldTypes {
   }
   User: { // field return type
     created_at: any; // DateTime!
-    email: string; // String!
+    email: string | null; // String
     id: number; // Int!
     ischild: boolean; // Boolean!
     name: string | null; // String
@@ -82,7 +82,7 @@ export interface NexusGenFieldTypes {
 export interface NexusGenArgTypes {
   Mutation: {
     signup: { // args
-      email: string; // String!
+      email?: string | null; // String
       name: string; // String!
       password: string; // String!
     }

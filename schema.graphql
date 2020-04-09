@@ -10,7 +10,7 @@ type AuthPayload {
 scalar DateTime
 
 type Mutation {
-  signup(email: String!, name: String!, password: String!): AuthPayload!
+  signup(email: String, name: String!, password: String!): AuthPayload!
   signupUser(data: UserCreateInput!): User!
 }
 
@@ -20,7 +20,7 @@ type Query {
 
 type User {
   created_at: DateTime!
-  email: String!
+  email: String
   id: Int!
   ischild: Boolean!
   name: String
@@ -29,7 +29,7 @@ type User {
 
 input UserCreateInput {
   created_at: DateTime
-  email: String!
+  email: String
   ischild: Boolean
   name: String
   password: String!

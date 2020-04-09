@@ -7,6 +7,12 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model Relationships {
+  child_id  Int
+  id        Int @default(autoincrement()) @id
+  parent_id Int
+}
+
 model Stickers {
   created_at DateTime @default(now())
   id         Int      @default(autoincrement()) @id
@@ -16,7 +22,7 @@ model Stickers {
 
 model User {
   created_at DateTime @default(now())
-  email      String   @unique
+  email      String?  @unique
   id         Int      @default(autoincrement()) @id
   ischild    Boolean  @default(false)
   name       String?
