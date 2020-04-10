@@ -32,3 +32,22 @@ export const signup = mutationField('signup', {
     };
   },
 });
+
+export const createChildAccount = mutationField('createChildAccount', {
+  type: 'User',
+  args: {
+    name: stringArg({ required: true }),
+    password: stringArg({ required: true }),
+  },
+  resolve: async (_parent, { name, password }, ctx) => {
+    const user = await ctx.prisma.user.create({
+      data: {
+        name,
+        password,
+        ischild: true,
+      },
+    });
+
+    return user;
+  },
+});
