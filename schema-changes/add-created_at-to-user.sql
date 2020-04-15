@@ -1,2 +1,0 @@
-ALTER TABLE "public"."User"
-ADD COLUMN created_at TIMESTAMP NOT NULL DEFAULT NOW();
