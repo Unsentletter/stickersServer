@@ -1,7 +1,6 @@
 import { objectType, mutationField, stringArg } from 'nexus';
 
-import { hashPassword } from '../../utils/helpers';
-import { generateToken } from '../../utils/helpers';
+import { hashPassword, generateToken } from '../../utils/helpers';
 import { getUserId } from '../../utils/getUserId';
 
 export const User = objectType({
@@ -42,7 +41,6 @@ export const createChildAccount = mutationField('createChildAccount', {
   },
   resolve: async (_parent, { name, password }, ctx) => {
     const userId = getUserId(ctx);
-    console.log('CTX', userId);
     if (!userId) {
       // TODO -think I might need to throw an error here
       return;

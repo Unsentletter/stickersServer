@@ -68,7 +68,8 @@ export interface NexusGenFieldTypes {
     signupUser: NexusGenRootTypes['User']; // User!
   }
   Query: { // field return type
-    findAllUsers: NexusGenRootTypes['User'][]; // [User!]!
+    findAllUsers: NexusGenRootTypes['User'] | null; // User
+    getUser: NexusGenRootTypes['User']; // User!
   }
   User: { // field return type
     created_at: any; // DateTime!
@@ -97,11 +98,7 @@ export interface NexusGenArgTypes {
   }
   Query: {
     findAllUsers: { // args
-      after?: NexusGenInputs['UserWhereUniqueInput'] | null; // UserWhereUniqueInput
-      before?: NexusGenInputs['UserWhereUniqueInput'] | null; // UserWhereUniqueInput
-      first?: number | null; // Int
-      last?: number | null; // Int
-      skip?: number | null; // Int
+      where: NexusGenInputs['UserWhereUniqueInput']; // UserWhereUniqueInput!
     }
   }
 }

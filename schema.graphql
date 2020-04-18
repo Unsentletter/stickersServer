@@ -16,7 +16,8 @@ type Mutation {
 }
 
 type Query {
-  findAllUsers(after: UserWhereUniqueInput, before: UserWhereUniqueInput, first: Int, last: Int, skip: Int): [User!]!
+  findAllUsers(where: UserWhereUniqueInput!): User
+  getUser: User!
 }
 
 type User {
