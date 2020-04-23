@@ -1,9 +1,9 @@
 CREATE TABLE "public"."Relationships" (
     id SERIAL PRIMARY KEY NOT NULL,
     parent_id INT NOT NULL,
-    FOREIGN KEY (parent_id) REFERENCES "public"."User" (id),
+    FOREIGN KEY (parent_id) REFERENCES "User" (id),
     child_id INT NOT NULL,
-    FOREIGN KEY (child_id) REFERENCES "public"."User" (id)
+    FOREIGN KEY (child_id) REFERENCES "User" (id)
 )
 
 CREATE TABLE "public"."User" (

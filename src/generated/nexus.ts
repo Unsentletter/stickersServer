@@ -69,6 +69,7 @@ export interface NexusGenFieldTypes {
   }
   Query: { // field return type
     findAllUsers: NexusGenRootTypes['User'] | null; // User
+    getChildren: NexusGenRootTypes['Query']; // Query!
     getUser: NexusGenRootTypes['User']; // User!
   }
   User: { // field return type

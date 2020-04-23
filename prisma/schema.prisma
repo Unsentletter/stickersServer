@@ -7,24 +7,21 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Relationships {
-  child_id  Int
-  id        Int @default(autoincrement()) @id
-  parent_id Int
-}
-
-model Stickers {
-  created_at DateTime @default(now())
-  id         Int      @default(autoincrement()) @id
-  parent     String?
-  tally      Int?     @default(0)
+model Relationship {
+  child_id                          Int
+  id                                Int  @default(autoincrement()) @id
+  parent_id                         Int
+  User_Relationship_child_idToUser  User @relation("Relationship_child_idToUser", fields: [child_id], references: [id])
+  User_Relationship_parent_idToUser User @relation("Relationship_parent_idToUser", fields: [parent_id], references: [id])
 }
 
 model User {
-  created_at DateTime @default(now())
-  email      String?  @unique
-  id         Int      @default(autoincrement()) @id
-  ischild    Boolean  @default(false)
-  name       String?
-  password   String
+  created_at                                DateTime       @default(now())
+  email                                     String?        @unique
+  id                                        Int            @default(autoincrement()) @id
+  ischild                                   Boolean        @default(false)
+  name                                      String?
+  password                                  String
+  Relationship_Relationship_child_idToUser  Relationship[] @relation("Relationship_child_idToUser")
+  Relationship_Relationship_parent_idToUser Relationship[] @relation("Relationship_parent_idToUser")
 }
