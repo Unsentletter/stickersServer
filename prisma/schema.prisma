@@ -11,8 +11,8 @@ model Relationship {
   child_id                          Int
   id                                Int  @default(autoincrement()) @id
   parent_id                         Int
-  User_Relationship_child_idToUser  User @relation("Relationship_child_idToUser", fields: [child_id], references: [id])
-  User_Relationship_parent_idToUser User @relation("Relationship_parent_idToUser", fields: [parent_id], references: [id])
+  child                             User @relation("Relationship_child_idToUser", fields: [child_id], references: [id])
+  parent                            User @relation("Relationship_parent_idToUser", fields: [parent_id], references: [id])
 }
 
 model User {
@@ -22,6 +22,6 @@ model User {
   ischild                                   Boolean        @default(false)
   name                                      String?
   password                                  String
-  Relationship_Relationship_child_idToUser  Relationship[] @relation("Relationship_child_idToUser")
-  Relationship_Relationship_parent_idToUser Relationship[] @relation("Relationship_parent_idToUser")
+  child                                     Relationship[] @relation("Relationship_child_idToUser")
+  parent                                    Relationship[] @relation("Relationship_parent_idToUser")
 }

@@ -17,8 +17,29 @@ type Mutation {
 
 type Query {
   findAllUsers(where: UserWhereUniqueInput!): User
-  getChildren: Query!
   getUser: User!
+}
+
+input RelationshipCreateManyWithoutUser_Relationship_child_idToUserInput {
+  connect: [RelationshipWhereUniqueInput!]
+  create: [RelationshipCreateWithoutUser_Relationship_child_idToUserInput!]
+}
+
+input RelationshipCreateManyWithoutUser_Relationship_parent_idToUserInput {
+  connect: [RelationshipWhereUniqueInput!]
+  create: [RelationshipCreateWithoutUser_Relationship_parent_idToUserInput!]
+}
+
+input RelationshipCreateWithoutUser_Relationship_child_idToUserInput {
+  User_Relationship_parent_idToUser: UserCreateOneWithoutRelationship_Relationship_parent_idToUserInput!
+}
+
+input RelationshipCreateWithoutUser_Relationship_parent_idToUserInput {
+  User_Relationship_child_idToUser: UserCreateOneWithoutRelationship_Relationship_child_idToUserInput!
+}
+
+input RelationshipWhereUniqueInput {
+  id: Int
 }
 
 type User {
@@ -36,6 +57,36 @@ input UserCreateInput {
   ischild: Boolean
   name: String
   password: String!
+  Relationship_Relationship_child_idToUser: RelationshipCreateManyWithoutUser_Relationship_child_idToUserInput
+  Relationship_Relationship_parent_idToUser: RelationshipCreateManyWithoutUser_Relationship_parent_idToUserInput
+}
+
+input UserCreateOneWithoutRelationship_Relationship_child_idToUserInput {
+  connect: UserWhereUniqueInput
+  create: UserCreateWithoutRelationship_Relationship_child_idToUserInput
+}
+
+input UserCreateOneWithoutRelationship_Relationship_parent_idToUserInput {
+  connect: UserWhereUniqueInput
+  create: UserCreateWithoutRelationship_Relationship_parent_idToUserInput
+}
+
+input UserCreateWithoutRelationship_Relationship_child_idToUserInput {
+  created_at: DateTime
+  email: String
+  ischild: Boolean
+  name: String
+  password: String!
+  Relationship_Relationship_parent_idToUser: RelationshipCreateManyWithoutUser_Relationship_parent_idToUserInput
+}
+
+input UserCreateWithoutRelationship_Relationship_parent_idToUserInput {
+  created_at: DateTime
+  email: String
+  ischild: Boolean
+  name: String
+  password: String!
+  Relationship_Relationship_child_idToUser: RelationshipCreateManyWithoutUser_Relationship_child_idToUserInput
 }
 
 input UserWhereUniqueInput {
