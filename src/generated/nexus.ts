@@ -20,55 +20,55 @@ declare global {
 }
 
 export interface NexusGenInputs {
-  RelationshipCreateManyWithoutUser_Relationship_child_idToUserInput: { // input type
+  RelationshipCreateManyWithoutChildInput: { // input type
     connect?: NexusGenInputs['RelationshipWhereUniqueInput'][] | null; // [RelationshipWhereUniqueInput!]
-    create?: NexusGenInputs['RelationshipCreateWithoutUser_Relationship_child_idToUserInput'][] | null; // [RelationshipCreateWithoutUser_Relationship_child_idToUserInput!]
+    create?: NexusGenInputs['RelationshipCreateWithoutChildInput'][] | null; // [RelationshipCreateWithoutChildInput!]
   }
-  RelationshipCreateManyWithoutUser_Relationship_parent_idToUserInput: { // input type
+  RelationshipCreateManyWithoutParentInput: { // input type
     connect?: NexusGenInputs['RelationshipWhereUniqueInput'][] | null; // [RelationshipWhereUniqueInput!]
-    create?: NexusGenInputs['RelationshipCreateWithoutUser_Relationship_parent_idToUserInput'][] | null; // [RelationshipCreateWithoutUser_Relationship_parent_idToUserInput!]
+    create?: NexusGenInputs['RelationshipCreateWithoutParentInput'][] | null; // [RelationshipCreateWithoutParentInput!]
   }
-  RelationshipCreateWithoutUser_Relationship_child_idToUserInput: { // input type
-    User_Relationship_parent_idToUser: NexusGenInputs['UserCreateOneWithoutRelationship_Relationship_parent_idToUserInput']; // UserCreateOneWithoutRelationship_Relationship_parent_idToUserInput!
+  RelationshipCreateWithoutChildInput: { // input type
+    parent: NexusGenInputs['UserCreateOneWithoutParentInput']; // UserCreateOneWithoutParentInput!
   }
-  RelationshipCreateWithoutUser_Relationship_parent_idToUserInput: { // input type
-    User_Relationship_child_idToUser: NexusGenInputs['UserCreateOneWithoutRelationship_Relationship_child_idToUserInput']; // UserCreateOneWithoutRelationship_Relationship_child_idToUserInput!
+  RelationshipCreateWithoutParentInput: { // input type
+    child: NexusGenInputs['UserCreateOneWithoutChildInput']; // UserCreateOneWithoutChildInput!
   }
   RelationshipWhereUniqueInput: { // input type
     id?: number | null; // Int
   }
   UserCreateInput: { // input type
+    child?: NexusGenInputs['RelationshipCreateManyWithoutChildInput'] | null; // RelationshipCreateManyWithoutChildInput
     created_at?: any | null; // DateTime
     email?: string | null; // String
     ischild?: boolean | null; // Boolean
     name?: string | null; // String
+    parent?: NexusGenInputs['RelationshipCreateManyWithoutParentInput'] | null; // RelationshipCreateManyWithoutParentInput
     password: string; // String!
-    Relationship_Relationship_child_idToUser?: NexusGenInputs['RelationshipCreateManyWithoutUser_Relationship_child_idToUserInput'] | null; // RelationshipCreateManyWithoutUser_Relationship_child_idToUserInput
-    Relationship_Relationship_parent_idToUser?: NexusGenInputs['RelationshipCreateManyWithoutUser_Relationship_parent_idToUserInput'] | null; // RelationshipCreateManyWithoutUser_Relationship_parent_idToUserInput
   }
-  UserCreateOneWithoutRelationship_Relationship_child_idToUserInput: { // input type
+  UserCreateOneWithoutChildInput: { // input type
     connect?: NexusGenInputs['UserWhereUniqueInput'] | null; // UserWhereUniqueInput
-    create?: NexusGenInputs['UserCreateWithoutRelationship_Relationship_child_idToUserInput'] | null; // UserCreateWithoutRelationship_Relationship_child_idToUserInput
+    create?: NexusGenInputs['UserCreateWithoutChildInput'] | null; // UserCreateWithoutChildInput
   }
-  UserCreateOneWithoutRelationship_Relationship_parent_idToUserInput: { // input type
+  UserCreateOneWithoutParentInput: { // input type
     connect?: NexusGenInputs['UserWhereUniqueInput'] | null; // UserWhereUniqueInput
-    create?: NexusGenInputs['UserCreateWithoutRelationship_Relationship_parent_idToUserInput'] | null; // UserCreateWithoutRelationship_Relationship_parent_idToUserInput
+    create?: NexusGenInputs['UserCreateWithoutParentInput'] | null; // UserCreateWithoutParentInput
   }
-  UserCreateWithoutRelationship_Relationship_child_idToUserInput: { // input type
+  UserCreateWithoutChildInput: { // input type
+    created_at?: any | null; // DateTime
+    email?: string | null; // String
+    ischild?: boolean | null; // Boolean
+    name?: string | null; // String
+    parent?: NexusGenInputs['RelationshipCreateManyWithoutParentInput'] | null; // RelationshipCreateManyWithoutParentInput
+    password: string; // String!
+  }
+  UserCreateWithoutParentInput: { // input type
+    child?: NexusGenInputs['RelationshipCreateManyWithoutChildInput'] | null; // RelationshipCreateManyWithoutChildInput
     created_at?: any | null; // DateTime
     email?: string | null; // String
     ischild?: boolean | null; // Boolean
     name?: string | null; // String
     password: string; // String!
-    Relationship_Relationship_parent_idToUser?: NexusGenInputs['RelationshipCreateManyWithoutUser_Relationship_parent_idToUserInput'] | null; // RelationshipCreateManyWithoutUser_Relationship_parent_idToUserInput
-  }
-  UserCreateWithoutRelationship_Relationship_parent_idToUserInput: { // input type
-    created_at?: any | null; // DateTime
-    email?: string | null; // String
-    ischild?: boolean | null; // Boolean
-    name?: string | null; // String
-    password: string; // String!
-    Relationship_Relationship_child_idToUser?: NexusGenInputs['RelationshipCreateManyWithoutUser_Relationship_child_idToUserInput'] | null; // RelationshipCreateManyWithoutUser_Relationship_child_idToUserInput
   }
   UserWhereUniqueInput: { // input type
     email?: string | null; // String
@@ -96,16 +96,16 @@ export interface NexusGenRootTypes {
 }
 
 export interface NexusGenAllTypes extends NexusGenRootTypes {
-  RelationshipCreateManyWithoutUser_Relationship_child_idToUserInput: NexusGenInputs['RelationshipCreateManyWithoutUser_Relationship_child_idToUserInput'];
-  RelationshipCreateManyWithoutUser_Relationship_parent_idToUserInput: NexusGenInputs['RelationshipCreateManyWithoutUser_Relationship_parent_idToUserInput'];
-  RelationshipCreateWithoutUser_Relationship_child_idToUserInput: NexusGenInputs['RelationshipCreateWithoutUser_Relationship_child_idToUserInput'];
-  RelationshipCreateWithoutUser_Relationship_parent_idToUserInput: NexusGenInputs['RelationshipCreateWithoutUser_Relationship_parent_idToUserInput'];
+  RelationshipCreateManyWithoutChildInput: NexusGenInputs['RelationshipCreateManyWithoutChildInput'];
+  RelationshipCreateManyWithoutParentInput: NexusGenInputs['RelationshipCreateManyWithoutParentInput'];
+  RelationshipCreateWithoutChildInput: NexusGenInputs['RelationshipCreateWithoutChildInput'];
+  RelationshipCreateWithoutParentInput: NexusGenInputs['RelationshipCreateWithoutParentInput'];
   RelationshipWhereUniqueInput: NexusGenInputs['RelationshipWhereUniqueInput'];
   UserCreateInput: NexusGenInputs['UserCreateInput'];
-  UserCreateOneWithoutRelationship_Relationship_child_idToUserInput: NexusGenInputs['UserCreateOneWithoutRelationship_Relationship_child_idToUserInput'];
-  UserCreateOneWithoutRelationship_Relationship_parent_idToUserInput: NexusGenInputs['UserCreateOneWithoutRelationship_Relationship_parent_idToUserInput'];
-  UserCreateWithoutRelationship_Relationship_child_idToUserInput: NexusGenInputs['UserCreateWithoutRelationship_Relationship_child_idToUserInput'];
-  UserCreateWithoutRelationship_Relationship_parent_idToUserInput: NexusGenInputs['UserCreateWithoutRelationship_Relationship_parent_idToUserInput'];
+  UserCreateOneWithoutChildInput: NexusGenInputs['UserCreateOneWithoutChildInput'];
+  UserCreateOneWithoutParentInput: NexusGenInputs['UserCreateOneWithoutParentInput'];
+  UserCreateWithoutChildInput: NexusGenInputs['UserCreateWithoutChildInput'];
+  UserCreateWithoutParentInput: NexusGenInputs['UserCreateWithoutParentInput'];
   UserWhereUniqueInput: NexusGenInputs['UserWhereUniqueInput'];
 }
 
@@ -162,7 +162,7 @@ export interface NexusGenInheritedFields {}
 
 export type NexusGenObjectNames = "AuthPayload" | "Mutation" | "Query" | "User";
 
-export type NexusGenInputNames = "RelationshipCreateManyWithoutUser_Relationship_child_idToUserInput" | "RelationshipCreateManyWithoutUser_Relationship_parent_idToUserInput" | "RelationshipCreateWithoutUser_Relationship_child_idToUserInput" | "RelationshipCreateWithoutUser_Relationship_parent_idToUserInput" | "RelationshipWhereUniqueInput" | "UserCreateInput" | "UserCreateOneWithoutRelationship_Relationship_child_idToUserInput" | "UserCreateOneWithoutRelationship_Relationship_parent_idToUserInput" | "UserCreateWithoutRelationship_Relationship_child_idToUserInput" | "UserCreateWithoutRelationship_Relationship_parent_idToUserInput" | "UserWhereUniqueInput";
+export type NexusGenInputNames = "RelationshipCreateManyWithoutChildInput" | "RelationshipCreateManyWithoutParentInput" | "RelationshipCreateWithoutChildInput" | "RelationshipCreateWithoutParentInput" | "RelationshipWhereUniqueInput" | "UserCreateInput" | "UserCreateOneWithoutChildInput" | "UserCreateOneWithoutParentInput" | "UserCreateWithoutChildInput" | "UserCreateWithoutParentInput" | "UserWhereUniqueInput";
 
 export type NexusGenEnumNames = never;
 

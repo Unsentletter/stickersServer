@@ -20,22 +20,22 @@ type Query {
   getUser: User!
 }
 
-input RelationshipCreateManyWithoutUser_Relationship_child_idToUserInput {
+input RelationshipCreateManyWithoutChildInput {
   connect: [RelationshipWhereUniqueInput!]
-  create: [RelationshipCreateWithoutUser_Relationship_child_idToUserInput!]
+  create: [RelationshipCreateWithoutChildInput!]
 }
 
-input RelationshipCreateManyWithoutUser_Relationship_parent_idToUserInput {
+input RelationshipCreateManyWithoutParentInput {
   connect: [RelationshipWhereUniqueInput!]
-  create: [RelationshipCreateWithoutUser_Relationship_parent_idToUserInput!]
+  create: [RelationshipCreateWithoutParentInput!]
 }
 
-input RelationshipCreateWithoutUser_Relationship_child_idToUserInput {
-  User_Relationship_parent_idToUser: UserCreateOneWithoutRelationship_Relationship_parent_idToUserInput!
+input RelationshipCreateWithoutChildInput {
+  parent: UserCreateOneWithoutParentInput!
 }
 
-input RelationshipCreateWithoutUser_Relationship_parent_idToUserInput {
-  User_Relationship_child_idToUser: UserCreateOneWithoutRelationship_Relationship_child_idToUserInput!
+input RelationshipCreateWithoutParentInput {
+  child: UserCreateOneWithoutChildInput!
 }
 
 input RelationshipWhereUniqueInput {
@@ -52,41 +52,41 @@ type User {
 }
 
 input UserCreateInput {
+  child: RelationshipCreateManyWithoutChildInput
   created_at: DateTime
   email: String
   ischild: Boolean
   name: String
+  parent: RelationshipCreateManyWithoutParentInput
   password: String!
-  Relationship_Relationship_child_idToUser: RelationshipCreateManyWithoutUser_Relationship_child_idToUserInput
-  Relationship_Relationship_parent_idToUser: RelationshipCreateManyWithoutUser_Relationship_parent_idToUserInput
 }
 
-input UserCreateOneWithoutRelationship_Relationship_child_idToUserInput {
+input UserCreateOneWithoutChildInput {
   connect: UserWhereUniqueInput
-  create: UserCreateWithoutRelationship_Relationship_child_idToUserInput
+  create: UserCreateWithoutChildInput
 }
 
-input UserCreateOneWithoutRelationship_Relationship_parent_idToUserInput {
+input UserCreateOneWithoutParentInput {
   connect: UserWhereUniqueInput
-  create: UserCreateWithoutRelationship_Relationship_parent_idToUserInput
+  create: UserCreateWithoutParentInput
 }
 
-input UserCreateWithoutRelationship_Relationship_child_idToUserInput {
+input UserCreateWithoutChildInput {
+  created_at: DateTime
+  email: String
+  ischild: Boolean
+  name: String
+  parent: RelationshipCreateManyWithoutParentInput
+  password: String!
+}
+
+input UserCreateWithoutParentInput {
+  child: RelationshipCreateManyWithoutChildInput
   created_at: DateTime
   email: String
   ischild: Boolean
   name: String
   password: String!
-  Relationship_Relationship_parent_idToUser: RelationshipCreateManyWithoutUser_Relationship_parent_idToUserInput
-}
-
-input UserCreateWithoutRelationship_Relationship_parent_idToUserInput {
-  created_at: DateTime
-  email: String
-  ischild: Boolean
-  name: String
-  password: String!
-  Relationship_Relationship_child_idToUser: RelationshipCreateManyWithoutUser_Relationship_child_idToUserInput
 }
 
 input UserWhereUniqueInput {
