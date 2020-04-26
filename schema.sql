@@ -1,4 +1,4 @@
-CREATE TABLE "public"."Relationships" (
+CREATE TABLE "public"."Relationship" (
     id SERIAL PRIMARY KEY NOT NULL,
     parent_id INT NOT NULL,
     FOREIGN KEY (parent_id) REFERENCES "User" (id),
