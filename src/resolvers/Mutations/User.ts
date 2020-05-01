@@ -52,10 +52,18 @@ export const createChildAccount = mutationField('createChildAccount', {
         ischild: true,
       },
     });
-    await ctx.prisma.relationships.create({
+    await ctx.prisma.relationship.create({
       data: {
-        parent_id: userId,
-        child_id: user.id,
+        parent: {
+          connect: {
+            id: userId,
+          },
+        },
+        child: {
+          connect: {
+            id: user.id,
+          },
+        },
       },
     });
     return user;
