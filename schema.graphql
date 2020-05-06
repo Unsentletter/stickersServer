@@ -11,6 +11,7 @@ scalar DateTime
 
 type Mutation {
   createChildAccount(name: String!, password: String!): User!
+  signin(email: String!, password: String!): AuthPayload!
   signup(email: String!, name: String!, password: String!): AuthPayload!
   signupUser(data: UserCreateInput!): User!
 }

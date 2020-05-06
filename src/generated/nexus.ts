@@ -116,6 +116,7 @@ export interface NexusGenFieldTypes {
   }
   Mutation: { // field return type
     createChildAccount: NexusGenRootTypes['User']; // User!
+    signin: NexusGenRootTypes['AuthPayload']; // AuthPayload!
     signup: NexusGenRootTypes['AuthPayload']; // AuthPayload!
     signupUser: NexusGenRootTypes['User']; // User!
   }
@@ -137,6 +138,10 @@ export interface NexusGenArgTypes {
   Mutation: {
     createChildAccount: { // args
       name: string; // String!
+      password: string; // String!
+    }
+    signin: { // args
+      email: string; // String!
       password: string; // String!
     }
     signup: { // args

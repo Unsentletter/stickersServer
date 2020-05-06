@@ -2,11 +2,37 @@ import { objectType, mutationField, stringArg } from 'nexus';
 
 import { hashPassword, generateToken } from '../../utils/helpers';
 import { getUserId } from '../../utils/getUserId';
+import { compare } from 'bcrypt';
 
 export const User = objectType({
   name: 'Mutation',
   definition(t) {
     t.crud.createOneUser({ alias: 'signupUser' });
+  },
+});
+
+export const signin = mutationField('signin', {
+  type: 'AuthPayload',
+  args: {
+    email: stringArg({ required: true }),
+    password: stringArg({ required: true }),
+  },
+  resolve: async (_parent, { email, password }, ctx) => {
+    const user = await ctx.prisma.user.findOne({
+      where: { email },
+    });
+
+    if (!user) {
+      throw new Error('Unable to login');
+    }
+    const isMatch = compare(password, user.password);
+    if (!isMatch) {
+      throw new Error('Unable to login');
+    }
+    return {
+      user,
+      token: generateToken(user.id),
+    };
   },
 });
 
