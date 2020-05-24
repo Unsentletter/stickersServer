@@ -25,3 +25,23 @@ export const getUser = queryField('getUser', {
     return user;
   },
 });
+
+export const getChildren = queryField('getChildren', {
+  type: 'User',
+  list: true,
+  resolve: async (_parent, {}, ctx) => {
+    const userId = getUserId(ctx);
+    if (!userId) {
+      // TODO -think I might need to throw an error here
+      return;
+    }
+    console.log('USER', userId);
+    const children = await ctx.prisma.relationship.findMany({
+      where: {
+        parent_id: userId,
+      },
+    });
+    console.log('CHILDREN', children);
+    return children;
+  },
+});

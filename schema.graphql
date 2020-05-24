@@ -18,6 +18,7 @@ type Mutation {
 
 type Query {
   findAllUsers(where: UserWhereUniqueInput!): User
+  getChildren: [User!]!
   getUser: User!
 }
 
