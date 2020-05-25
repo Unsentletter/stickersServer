@@ -8,20 +8,20 @@ datasource db {
 }
 
 model Relationship {
-  child_id                          Int
-  id                                Int  @default(autoincrement()) @id
-  parent_id                         Int
-  child                             User @relation("Relationship_child_idToUser", fields: [child_id], references: [id])
-  parent                            User @relation("Relationship_parent_idToUser", fields: [parent_id], references: [id])
+  child_id            Int
+  id                  Int  @default(autoincrement()) @id
+  parent_id           Int
+  child               User @relation("Relationship_child_idToUser", fields: [child_id], references: [id])
+  parent              User @relation("Relationship_parent_idToUser", fields: [parent_id], references: [id])
 }
 
 model User {
-  created_at                                DateTime       @default(now())
-  email                                     String?        @unique
-  id                                        Int            @default(autoincrement()) @id
-  ischild                                   Boolean        @default(false)
-  name                                      String?
-  password                                  String
-  child                                     Relationship[] @relation("Relationship_child_idToUser")
-  parent                                    Relationship[] @relation("Relationship_parent_idToUser")
+  created_at          DateTime       @default(now())
+  email               String?        @unique
+  id                  Int            @default(autoincrement()) @id
+  ischild             Boolean        @default(false)
+  name                String?
+  password            String
+  children            Relationship[] @relation("Relationship_child_idToUser")
+  parents             Relationship[] @relation("Relationship_parent_idToUser")
 }
